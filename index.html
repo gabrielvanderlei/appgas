@@ -31,6 +31,10 @@
       var errorMessage = error.message;
       alert(errorMessage);
     });
+    
+    function show(id){
+      document.getElementById(id).style.display='block';
+    }
   }
 </script>
 <style>
@@ -43,11 +47,18 @@
   <h1>Appgas</h1>
   <h3>Saiba quanto gas su botijão possui pelo aplicativo.</h3>
   <div class='options'>
-    <div class='button'>Já possuo uma conta</div>
-    <div class='button'>Registrar-se</div>
+    <div class='button' onclick='show("logar")'>Já possuo uma conta</div>
+    <div class='button' onclick='show("criar")'>Registrar-se</div>
   </div>
 </div>
+<div class='section' id='criar'>
   <input type='email' id='email' placeholder='Email' />
   <input type='password' id='senha' placeholder='Senha' />
   <input type='button' onclick='criarUsuario()' value='Criar usuário' />
+</div>
+
+<div class='section' id='logar'>
+  <input type='email' id='email' placeholder='Email' />
+  <input type='password' id='senha' placeholder='Senha' />
   <input type='button' onclick='logarUsuario()' value='Entrar na conta' />
+</div>
