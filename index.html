@@ -46,7 +46,7 @@
   #main{display:block;padding:30px;}
   .options{padding:30% 0;}
   .button{background:rgb(200, 0, 0);color:white;border-radius:300px;width:200px;padding:9px 15px; margin: 20px 0px}
-  #senha,#email{padding:9px;border:1px solid rgb(230, 230, 230);border-radius:30px;}
+  .text{padding:9px;border:1px solid rgb(230, 230, 230);border-radius:30px;}
   
 </style>
 <div class='section' id='main'>
@@ -59,13 +59,13 @@
 </div>
 
 <div class='section' id='criar'>
-  <input type='email' id='emailc' placeholder='Email' />
-  <input type='password' id='senhac' placeholder='Senha' />
-  <input type='button' onclick='criarUsuario()' value='Criar usuário' />
+  <input type='email' class='text'  id='emailc' placeholder='Email' />
+  <input type='password' class='text'  id='senhac' placeholder='Senha' />
+  <input type='button' onclick='criarUsuario()' class='button' value='Criar usuário' />
 </div>
 
 <div class='section' id='logar'>
-  <input type='email' id='emaill' placeholder='Email' />
-  <input type='password' id='senhal' placeholder='Senha' />
-  <input type='button' onclick='logarUsuario()' value='Entrar na conta' />
+  <input type='email' id='emaill' class='text'  placeholder='Email' />
+  <input type='password' id='senhal' class='text'  placeholder='Senha' />
+  <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
 </div>
