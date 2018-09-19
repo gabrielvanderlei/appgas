@@ -19,9 +19,21 @@
       alert(errorMessage)
     });
   }
+  
+  function logarUsuario(){
+      firebase.auth().signInWithEmailAndPassword(document.getElementById('email').value,document.getElementById('password').value)
+      .then(function(data){
+        alert('logado');
+        alert(data);
+      }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+    })
+  }
 </script>
-<form onsubmit='criarUsuario()'>
   <input type='email' id='email' placeholder='Email' />
   <input type='password' id='senha' placeholder='Senha' />
-  <input type='submit' />
-</form>
+  <input type='button' onclick='criarUsuario()' value='Criar usuário' />
+  <input type='button' onclick='logarUsuario()' value='Entrar na conta' />
