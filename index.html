@@ -41,7 +41,9 @@
   .section{display:none;position:fixed;width:100%;height:100%;font-family:Segoe UI; color black;font-size:20px;text-align:center;}
   #main{display:block;padding:30px;}
   .options{padding:30%;}
-  .button{background:rgb(200, 200, 200);color:white;border-radius:300px;width:200px;padding:9px 15px;}
+  .button{background:rgb(200, 0, 0);color:white;border-radius:300px;width:200px;padding:9px 15px; margin: 20px}
+  #senha,#email{padding:9px;border:1px solid rgb(230, 230, 230);border-radius:30px;}
+  
 </style>
 <div class='section' id='main'>
   <h1>Appgas</h1>
@@ -51,6 +53,7 @@
     <div class='button' onclick='show("criar")'>Registrar-se</div>
   </div>
 </div>
+
 <div class='section' id='criar'>
   <input type='email' id='email' placeholder='Email' />
   <input type='password' id='senha' placeholder='Senha' />
