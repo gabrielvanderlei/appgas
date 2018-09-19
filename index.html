@@ -12,7 +12,7 @@
   firebase.initializeApp(config);
   
   function criarUsuario(){
-    firebase.auth().createUserWithEmailAndPassword(document.getElementById('email').value,document.getElementById('password').value).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(document.getElementById('email').value,document.getElementById('senha').value).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -21,7 +21,7 @@
   }
   
   function logarUsuario(){
-      firebase.auth().signInWithEmailAndPassword(document.getElementById('email').value,document.getElementById('password').value)
+      firebase.auth().signInWithEmailAndPassword(document.getElementById('email').value,document.getElementById('senha').value)
       .then(function(data){
         alert('logado');
         alert(data);
