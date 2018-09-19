@@ -48,7 +48,7 @@
     
   }
   
-    function show(last, id){
+    function show(id){
       $('.section').css('display', 'none');
       document.getElementById(id).style.display='block';
     }
@@ -71,7 +71,7 @@
       
       document.getElementById('username').innerHTML = email;
       
-      show('none','painel');
+      show('painel');
     } else {
       // User is signed out.
       // ...
@@ -105,8 +105,8 @@
   <h1>Appgas</h1>
   <h3>Saiba quanto gás seu botijão possui pelo aplicativo.</h3>
   <div class='options'>
-    <div class='button' onclick="show('main','logar')">Já possuo uma conta</div>
-    <div class='button' onclick="show('main','criar')">Registrar-se</div>
+    <div class='button' onclick="show('logar')">Já possuo uma conta</div>
+    <div class='button' onclick="show('criar')">Registrar-se</div>
   </div>
 </div>
 
