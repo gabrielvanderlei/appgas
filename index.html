@@ -1,0 +1,19 @@
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBqL1FecjFVvhXZJevbJn-SkZ__DxQxesc",
+    authDomain: "appgas-d7647.firebaseapp.com",
+    databaseURL: "https://appgas-d7647.firebaseio.com",
+    projectId: "appgas-d7647",
+    storageBucket: "appgas-d7647.appspot.com",
+    messagingSenderId: "715577686349"
+  };
+  firebase.initializeApp(config);
+  firebase.auth().createUserWithEmailAndPassword('gabrielvanderlei10@hotmail.com','123456').catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  alert(errorMessage)
+});
+</script>
