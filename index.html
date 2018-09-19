@@ -1,5 +1,9 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -45,7 +49,7 @@
   }
   
     function show(last, id){
-      document.getElementById(last).style.display='none';
+      $('.section').css('display', 'none');
       document.getElementById(id).style.display='block';
     }
   
@@ -71,7 +75,7 @@
     } else {
       // User is signed out.
       // ...
-      show('none', 'main');
+      show('main');
     }
   });
   
