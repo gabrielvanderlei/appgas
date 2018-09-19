@@ -13,7 +13,19 @@
   firebase.initializeApp(config);
   
   function criarUsuario(){
-    firebase.auth().createUserWithEmailAndPassword(document.getElementById('emailc').value,document.getElementById('senhac').value).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(document.getElementById('emailc').value,document.getElementById('senhac').value)
+      .then(function(data){
+        db.collection("users").add({
+            email: document.getElementById('emailc').value
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+    })
+      .catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -23,23 +35,7 @@
   
   function logarUsuario(){
       firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
-      .then(function(data){
-        alert('logado');
-        alert(data);
-        
-        db.collection("users").add({
-            first: "Ada",
-            last: "Lovelace",
-            born: 1815
-        })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
         .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-
-      }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -57,6 +53,26 @@
     // Initialize Cloud Firestore through Firebase
     var db = firebase.firestore();
     
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      // ...
+      
+      document.getElementById('username').innerHTML = email;
+      
+      show('main','painel');
+    } else {
+      // User is signed out.
+      // ...
+    }
+  });
     
   
 </script>
@@ -90,7 +106,5 @@
 </div>
 
 <div class='section' id='painel'>
-  <input type='email' id='emaill' class='text'  placeholder='Email' />
-  <input type='password' id='senhal' class='text'  placeholder='Senha' />
-  <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
+  <h1>Bem vindo <span id='username'></span></h1>
 </div>
