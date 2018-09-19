@@ -26,6 +26,19 @@
       .then(function(data){
         alert('logado');
         alert(data);
+        
+        db.collection("users").add({
+            first: "Ada",
+            last: "Lovelace",
+            born: 1815
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+
       }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -35,11 +48,17 @@
     
   }
   
-  
     function show(last, id){
       document.getElementById(last).style.display='none';
       document.getElementById(id).style.display='block';
     }
+  
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    
+    
+  
 </script>
 <style>
   .section{display:none;position:fixed;width:100%;height:100%;font-family:Segoe UI; color black;font-size:20px;text-align:center;top:0;left:0}
@@ -65,6 +84,12 @@
 </div>
 
 <div class='section' id='logar'>
+  <input type='email' id='emaill' class='text'  placeholder='Email' />
+  <input type='password' id='senhal' class='text'  placeholder='Senha' />
+  <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
+</div>
+
+<div class='section' id='painel'>
   <input type='email' id='emaill' class='text'  placeholder='Email' />
   <input type='password' id='senhal' class='text'  placeholder='Senha' />
   <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
