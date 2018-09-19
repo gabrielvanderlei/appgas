@@ -13,7 +13,7 @@
   firebase.initializeApp(config);
   
   function criarUsuario(){
-    firebase.auth().createUserWithEmailAndPassword(document.getElementById('email').value,document.getElementById('senha').value).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(document.getElementById('emailc').value,document.getElementById('senhac').value).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -22,7 +22,7 @@
   }
   
   function logarUsuario(){
-      firebase.auth().signInWithEmailAndPassword(document.getElementById('email').value,document.getElementById('senha').value)
+      firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
       .then(function(data){
         alert('logado');
         alert(data);
@@ -33,7 +33,8 @@
       alert(errorMessage);
     });
     
-    function show(id){
+    function show(last, id){
+      document.getElementById(last).style.display='none';
       document.getElementById(id).style.display='block';
     }
   }
@@ -50,19 +51,19 @@
   <h1>Appgas</h1>
   <h3>Saiba quanto gás seu botijão possui pelo aplicativo.</h3>
   <div class='options'>
-    <div class='button' onclick="show('logar')">Já possuo uma conta</div>
-    <div class='button' onclick="show('criar')">Registrar-se</div>
+    <div class='button' onclick="show('main','logar')">Já possuo uma conta</div>
+    <div class='button' onclick="show('main','criar')">Registrar-se</div>
   </div>
 </div>
 
 <div class='section' id='criar'>
-  <input type='email' id='email' placeholder='Email' />
-  <input type='password' id='senha' placeholder='Senha' />
+  <input type='email' id='emailc' placeholder='Email' />
+  <input type='password' id='senhac' placeholder='Senha' />
   <input type='button' onclick='criarUsuario()' value='Criar usuário' />
 </div>
 
 <div class='section' id='logar'>
-  <input type='email' id='email' placeholder='Email' />
-  <input type='password' id='senha' placeholder='Senha' />
+  <input type='email' id='emaill' placeholder='Email' />
+  <input type='password' id='senhal' placeholder='Senha' />
   <input type='button' onclick='logarUsuario()' value='Entrar na conta' />
 </div>
