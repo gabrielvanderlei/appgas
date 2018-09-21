@@ -62,7 +62,7 @@ var user=db.collection("users").doc(uuid);
 user.get().then(function(data){
 alert(data.sensores);
 })
-.catch(funcion(err){
+.catch(function(err){
 alert("erro");
 })
 }
