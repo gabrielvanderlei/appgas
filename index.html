@@ -102,7 +102,7 @@
 <div id='none'></div>
 
 <div class='section' id='main'>
-  <h1>Appgas 34</h1>
+  <h1>Appgafffs 34</h1>
   <h3>Saiba quanto gás seu botijão possui pelo aplicativo.</h3>
   <div class='options'>
     <div class='button' onclick="show('logar')">Já possuo uma conta</div>
@@ -116,7 +116,8 @@
   <input type='button' onclick='criarUsuario()' class='button' value='Criar usuário' />
 </div>
 
-<div class='section' id='logar'>
+<div class='section form' id='logar'>
+<h1>Bem vindo novamente</h1>
   <input type='email' id='emaill' class='text'  placeholder='Email' />
   <input type='password' id='senhal' class='text'  placeholder='Senha' />
   <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
@@ -124,5 +125,6 @@
 
 <div class='section' id='painel'>
   <h1>Bem vindo <span id='username'></span></h1>
+  <input type='button' onclick="show('addSensor'')" class='button'  value='Adicionar sensor' />
   <input type='button' onclick='logOut()' class='button'  value='Sair da conta' />
 </div>
