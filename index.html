@@ -15,7 +15,9 @@
     messagingSenderId: "715577686349"
   };
   firebase.initializeApp(config);
-  
+  // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    
   function criarUsuario(){
     firebase.auth().createUserWithEmailAndPassword(document.getElementById('emailc').value,document.getElementById('senhac').value)
       .then(function(data){
@@ -54,9 +56,7 @@
     }
   
 
-    // Initialize Cloud Firestore through Firebase
-    var db = firebase.firestore();
-    
+ 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -75,10 +75,30 @@
     } else {
       // User is signed out.
       // ...
-      show('main');
+      show('main');carregarSensores();
     }
   });
   
+function carregarSensores(){
+var user=db.collection("users").doc(uuid);
+user.get().then(function(data){
+alert(data.sensores);
+})
+.catch(funcion(err){
+alert("erro");
+})
+}
+
+function addSensor(){
+var user=db.collection("users").doc(uuid);
+user.set({
+sensores: [$("#sensor").val()]
+});
+
+show("painel");
+carregarSensores();
+}
+
   function logOut(){
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
@@ -125,6 +145,18 @@
 
 <div class='section' id='painel'>
   <h1>Bem vindo <span id='username'></span></h1>
-  <input type='button' onclick="show('addSensor'')" class='button'  value='Adicionar sensor' />
+<div id="sensores"></div>
+  <input type='button' onclick="show('addSensor'')" class='button'  value='Adicionar sensor' /> 
   <input type='button' onclick='logOut()' class='button'  value='Sair da conta' />
 </div>
+
+<div class='section form' id='addSensor '>
+<h1>Adicione um novo sensor</h1>
+  <input type='' id='sensor' class='text'  placeholder='Sensor'/>
+  <input type='button' onclick='addSensor ()' class='button'  value='Criar sensor' />
+</div>
+
+
+
+
+ 
