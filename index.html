@@ -38,10 +38,10 @@
       alert(errorMessage)
     });
   }
-  
+  var uuid;
   function logarUsuario(){
      
-var uuid; firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
+ firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
         .catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -80,7 +80,8 @@ alert("erro");
       
       document.getElementById('username').innerHTML = email;
       
-      show('painel');carregarSensores();
+      show('painel');
+carregarSensores();
     } else {
       // User is signed out.
       // ...
@@ -147,7 +148,7 @@ carregarSensores();
 <div class='section' id='painel'>
   <h1>Bem vindo <span id='username'></span></h1>
 <div id="sensores"></div>
-  <input type='button' onclick="show('addSensor'')" class='button'  value='Adicionar sensor' /> 
+  <input type='button' onclick="show('addSensor')" class='button'  value='Adicionar sensor' /> 
   <input type='button' onclick='logOut()' class='button'  value='Sair da conta' />
 </div>
 
