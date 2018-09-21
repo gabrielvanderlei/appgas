@@ -94,7 +94,7 @@ carregarSensores();
 function addSensor(){
 var user=db.collection("users").doc(uuid);
 user.set({
-sensores: [$("#sensor").val()]
+sensores: $("#sensor").val()
 });
 
 show("painel");
@@ -155,7 +155,7 @@ carregarSensores();
 <div class='section form' id='addSensor '>
 <h1>Adicione um novo sensor</h1>
   <input type='' id='sensor' class='text'  placeholder='Sensor'/>
-  <input type='button' onclick='addSensor ()' class='button'  value='Criar sensor' />
+  <input type='button' onclick='addSensor()' class='button'  value='Criar sensor' />
 </div>
 
 
