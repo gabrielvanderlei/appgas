@@ -40,7 +40,8 @@
   }
   
   function logarUsuario(){
-      firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
+     
+var uuid; firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
         .catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -56,30 +57,7 @@
     }
   
 
- 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      // ...
-      
-      document.getElementById('username').innerHTML = email;
-      
-      show('painel');
-    } else {
-      // User is signed out.
-      // ...
-      show('main');carregarSensores();
-    }
-  });
-  
-function carregarSensores(){
+ function carregarSensores(){
 var user=db.collection("users").doc(uuid);
 user.get().then(function(data){
 alert(data.sensores);
@@ -88,6 +66,29 @@ alert(data.sensores);
 alert("erro");
 })
 }
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      uuid = user.uid;
+      var providerData = user.providerData;
+      // ...
+      
+      document.getElementById('username').innerHTML = email;
+      
+      show('painel');carregarSensores();
+    } else {
+      // User is signed out.
+      // ...
+      show('main');
+    }
+  });
+  
+
 
 function addSensor(){
 var user=db.collection("users").doc(uuid);
