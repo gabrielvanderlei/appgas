@@ -21,15 +21,7 @@
   function criarUsuario(){
     firebase.auth().createUserWithEmailAndPassword(document.getElementById('emailc').value,document.getElementById('senhac').value)
       .then(function(data){
-        db.collection("users").add({
-            email: document.getElementById('emailc').value
-        })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
+alert('Registrado');
     })
       .catch(function(error) {
       // Handle Errors here.
@@ -60,6 +52,7 @@
  function carregarSensores(){
 var user=db.collection("users").doc(uuid);
 user.get().then(function(doc){
+console.log(doc);
 var data =doc.data();
 document.getElementById("sensores").innerHTML = '';
 data.forEach(function(key,index){
@@ -68,6 +61,7 @@ document.getElementById("sensores").innerHTML += key;
 })
 .catch(function(err){
 alert("erro");
+console.log(err)
 })
 }
   firebase.auth().onAuthStateChanged(function(user) {
@@ -78,9 +72,24 @@ alert("erro");
       var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
       var isAnonymous = user.isAnonymous;
-      uuid = user.uid;
+      
+uuid = user.uid;
       var providerData = user.providerData;
+
+
+var user=db.collection("users").doc(uuid).then(carregarSensores)
+.catch(function(){
+        db.collection("users").doc(uuid).add({
+            email: document.getElementById('emailc').value
+        })
+        .then(function(docRef) {
+            alert('Usuário configurado');
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
       // ...
+});
       
       document.getElementById('username').innerHTML = email;
       
