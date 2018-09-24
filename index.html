@@ -77,7 +77,7 @@ uuid = user.uid;
       var providerData = user.providerData;
 
 
-var user=db.collection("users").doc(uuid).then(carregarSensores)
+var user=db.collection("users").doc(uuid).get().then(carregarSensores)
 .catch(function(){
         db.collection("users").doc(uuid).add({
             email: document.getElementById('emailc').value
