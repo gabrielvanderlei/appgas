@@ -61,8 +61,10 @@
 var user=db.collection("users").doc(uuid);
 user.get().then(function(doc){
 var data =doc.data();
+document.getElementById("sensores").innerHTML = '';
 data.forEach(function(key,index){
-document.getElementById("sensores")
+document.getElementById("sensores").innerHTML += key;
+});
 })
 .catch(function(err){
 alert("erro");
