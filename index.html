@@ -51,11 +51,7 @@ alert('Registrado');
 
  function carregarSensores(doc){
 var data = doc.data();
-console.log(data);
-document.getElementById("sensores").innerHTML = '';
-data.forEach(function(key,index){
-document.getElementById("sensores").innerHTML += key;
-});
+document.getElementById("sensores").innerHTML = data.sensores;
 }
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
