@@ -1,54 +1,51 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, user-scalable=no">
-<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-<script src='js/script.js'></script>
-<link rel='stylesheet' href='css/style.css' />
-<title>appgas</title>
-</head>
-<body>
-<div id='none'></div>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src='js/script.js'></script>
+    <link rel='stylesheet' href='css/style.css' />
+    <title>appgas</title>
+  </head>
+  <body>
+    <div id='none'></div>
 
-<div class='section' id='main'>
-  <h1>Appgafffs 34</h1>
-  <h3>Saiba quanto gás seu botijão possui pelo aplicativo.</h3>
-  <div class='options'>
-    <div class='button' onclick="show('logar')">Já possuo uma conta</div>
-    <div class='button' onclick="show('criar')">Registrar-se</div>
-  </div>
-</div>
+    <div class='section' id='main'>
+      <h1>Appgas</h1>
+      <h3>Saiba quanto gás seu botijão possui pelo aplicativo.</h3>
+      <div class='options'>
+        <div class='button' onclick="show('logar')">Já possuo uma conta</div><br />
+        <div class='button' onclick="show('criar')">Registrar-se</div>
+      </div>
+    </div>
 
-<div class='section' id='criar'>
-  <input type='email' class='text'  id='emailc' placeholder='Email' />
-  <input type='password' class='text'  id='senhac' placeholder='Senha' />
-  <input type='button' onclick='criarUsuario()' class='button' value='Criar usuário' />
-</div>
+    <div class='section' id='criar'>
+      <input type='email' class='text'  id='emailc' placeholder='Email' /><br />
+      <input type='password' class='text'  id='senhac' placeholder='Senha' /><br />
+      <input type='button' onclick='criarUsuario()' class='button' value='Criar usuário' />
+    </div>
 
-<div class='section form' id='logar'>
-<h1>Bem vindo novamente</h1>
-  <input type='email' id='emaill' class='text'  placeholder='Email' />
-  <input type='password' id='senhal' class='text'  placeholder='Senha' />
-  <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
-</div>
+    <div class='section form' id='logar'>
+    <h1>Bem vindo novamente</h1>
+      <input type='email' id='emaill' class='text'  placeholder='Email' /><br />
+      <input type='password' id='senhal' class='text'  placeholder='Senha' /><br />
+      <input type='button' onclick='logarUsuario()' class='button'  value='Entrar na conta' />
+    </div>
 
-<div class='section' id='painel'>
-  <h1>Bem vindo <span id='username'></span></h1>
-<div id="sensores"></div>
-  <input type='button' onclick="show('addSensor')" class='button'  value='Adicionar sensor' /> 
-  <input type='button' onclick='logOut()' class='button'  value='Sair da conta' />
-</div>
+    <div class='section' id='painel'>
+      <h1>Bem vindo <span id='username'></span></h1>
+      <input type='button' onclick='logOut()' class='button'  value='Sair da conta' /><br />
+      <div id="sensores"></div>
+      <input type='button' onclick="show('addSensor')" class='button'  value='Adicionar sensor' /><br /> 
+    </div>
 
-<div class='section form' id='addSensor'>
-<h1>Adicione um novo sensor</h1>
-  <input type='' id='sensor' class='text'  placeholder='Sensor'/>
-  <input type='button' onclick='addSensor()' class='button'  value='Criar sensor' />
-</div>
-</body>
+    <div class='section form' id='addSensor'>
+      <h1>Adicione um novo sensor</h1>
+      <input type='' id='sensor' class='text'  placeholder='Sensor'/><br/>
+      <input type='button' onclick='addSensor()' class='button'  value='Criar sensor' />
+    </div>
+  </body>
 </html>
 
 

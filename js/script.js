@@ -7,45 +7,52 @@
     storageBucket: "appgas-d7647.appspot.com",
     messagingSenderId: "715577686349"
   };
+
+  var uuid;
+
   firebase.initializeApp(config);
   // Initialize Cloud Firestore through Firebase
-    var db = firebase.firestore();
+
+  var db = firebase.firestore();
     
   function criarUsuario(){
     firebase.auth().createUserWithEmailAndPassword(document.getElementById('emailc').value,document.getElementById('senhac').value)
       .then(function(data){
-alert('Registrado');
-    })
+          alert('Registrado');
+      })
       .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert(errorMessage)
-    });
-  }
-  var uuid;
-  function logarUsuario(){
-     
- firebase.auth().signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
-        .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert(errorMessage);
-    });
-    
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+      });
   }
   
-    function show(id){
-      $('.section').css('display', 'none');
-      $('#'+id).css('display','block');
-    }
+  function logarUsuario(){
+    firebase.auth()
+    .signInWithEmailAndPassword(document.getElementById('emaill').value,document.getElementById('senhal').value)
+    .then(function(){
+          alert("Logado!");
+    })
+    .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorMessage);
+    })
+  }
+  
+  function show(id){
+    $('.section').css('display', 'none');
+    $('#'+id).css('display','block');
+  }
   
 
  function carregarSensores(doc){
-var data = doc.data();
-document.getElementById("sensores").innerHTML = data.sensores;
-}
+    var data = doc.data();
+    document.getElementById("sensores").innerHTML = data.sensores;
+  }
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -55,28 +62,28 @@ document.getElementById("sensores").innerHTML = data.sensores;
       var photoURL = user.photoURL;
       var isAnonymous = user.isAnonymous;
       
-uuid = user.uid;
+      uuid = user.uid;
       var providerData = user.providerData;
 
 
-var user=db.collection("users").doc(uuid).get().then(carregarSensores)
-.catch(function(){
-        db.collection("users").doc(uuid).add({
-            email: document.getElementById('emailc').value
-        })
-        .then(function(docRef) {
-            alert('Usu·rio configurado');
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-      // ...
-});
-      
+      var user=db.collection("users").doc(uuid).get().then(carregarSensores)
+      .catch(function(){
+              db.collection("users").doc(uuid).add({
+                  email: user.email
+              })
+              .then(function(docRef) {
+                  alert('Usu√°rio configurado');
+              })
+              .catch(function(error) {
+                  console.error("Error adding document: ", error);
+              });
+            // ...
+      });
+            
       document.getElementById('username').innerHTML = email;
       
       show('painel');
-carregarSensores();
+      carregarSensores();
     } else {
       // User is signed out.
       // ...
@@ -86,15 +93,15 @@ carregarSensores();
   
 
 
-function addSensor(){
-var user=db.collection("users").doc(uuid);
-user.set({
-sensores: $("#sensor").val()
-}, {merge: true });
+  function addSensor(){
+      var user=db.collection("users").doc(uuid);
+      user.set({
+      sensores: $("#sensor").val()
+      }, {merge: true });
 
-show("painel");
-carregarSensores();
-}
+      show("painel");
+      carregarSensores();
+  }
 
   function logOut(){
     firebase.auth().signOut().then(function() {

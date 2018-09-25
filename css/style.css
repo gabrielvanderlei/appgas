@@ -1,5 +1,5 @@
-  .section{display:none;position:fixed;width:100%;height:100%;font-family:Segoe UI; color black;font-size:20px;text-align:center;top:0;left:0}
+  .section{display:none;position:fixed;width:100%;height:100%;font-family:Segoe UI; color: black;font-size:20px;text-align:center;top:0;left:0}
   .options{padding:30% 0;}
-  .button{background:rgb(200, 0, 0);color:white;border-radius:300px;width:200px;padding:9px 15px; margin: 20px 0px;display:inline-block;}
+  .button{background:rgb(200, 0, 0);color:white;border-radius:4px;width:200px;padding:9px 15px; margin: 20px 0px;display:inline-block;box-shadow: 0 0 7px rgba(0,0,0,0.3);}
   .text{padding:9px;border:1px solid rgb(230, 230, 230);border-radius:30px;}
   
